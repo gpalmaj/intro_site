@@ -6,7 +6,11 @@ body {
 }
 
 nav a {
-  margin-right: 1rem;
+  margin-right: 1.5rem;
   text-decoration: none;
   color: #0077cc;
+}
+
+p {
+  text-align: justify;
 }
