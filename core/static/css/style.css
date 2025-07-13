@@ -1,0 +1,12 @@
+body {
+  font-family: "JetBrains Mono";
+  margin: 3rem;
+  background-color: #232323;
+  color: #cdc;
+}
+
+nav a {
+  margin-right: 1rem;
+  text-decoration: none;
+  color: #0077cc;
+}
