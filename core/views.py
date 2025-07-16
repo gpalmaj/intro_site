@@ -14,3 +14,6 @@ def blog(request):
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
     return render(request, 'core/post_detail.html', {'post': post})
+
+def fun_game(request):
+    return render(request, 'core/fun_game.html')

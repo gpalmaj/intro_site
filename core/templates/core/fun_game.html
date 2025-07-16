@@ -1,0 +1,14 @@
+
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Fun Game{% endblock %}
+
+{% block content %}
+  <h1>Fun Game</h1>
+  <div class="fun-game-container">
+    <canvas id="fun_game" width="330" height="550"></canvas>
+  </div>
+  <script src="{% static 'js/fun_game.js' %}"></script>
+{% endblock %}
+

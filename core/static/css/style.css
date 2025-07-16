@@ -5,13 +5,7 @@ body {
   color: #cdc;
 }
 
-nav a {
-  margin-bottom: 2rem;
-  margin-right: 0.6rem;
-  text-decoration: none;
-  color: #0077cc;
-}
-
+nav a,
 a {
   margin-bottom: 2rem;
   margin-right: 0.6rem;
@@ -21,4 +15,18 @@ a {
 
 p {
   text-align: justify;
+}
+
+.fun-game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  width: fit-content;
+  margin: auto;
+}
+
+canvas#fun_game {
+  display: block;
+  margin: 0; /* remove espaços fantasmas */
 }
