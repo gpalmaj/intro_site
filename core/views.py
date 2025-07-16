@@ -11,6 +11,6 @@ def blog(request):
     posts = Post.objects.order_by('-created_at')
     return render(request, 'core/blog.html', {'posts': posts})
 
-def post_detail(request):
-    posts = get_object_or_404(Post, slug=slug)
+def post_detail(request, slug):
+    post = get_object_or_404(Post, slug=slug)
     return render(request, 'core/post_detail.html', {'post': post})

@@ -12,6 +12,13 @@ nav a {
   color: #0077cc;
 }
 
+a {
+  margin-bottom: 2rem;
+  margin-right: 0.6rem;
+  text-decoration: none;
+  color: #0077cc;
+}
+
 p {
   text-align: justify;
 }

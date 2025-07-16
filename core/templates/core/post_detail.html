@@ -2,5 +2,6 @@
 <h1>{{ post.title }}</h1>
 <p><em>{{ post.created_at|date:"d/m/Y" }}</em></p>
 <div>{{ post.content|linebreaks }}</div>
-<a href="{% url 'blog' %}">← Voltar</a>
+<a href="{% url 'blog' %}">← return</a>
+
 {% endblock %}
