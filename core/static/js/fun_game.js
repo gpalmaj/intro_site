@@ -121,15 +121,22 @@ function drawMatrix(matrix, offset, color) {
 }
 
 function draw() {
-  context.fillStyle = "#121212";
+  context.fillStyle = "#000";
   context.fillRect(0, 0, canvas.width, canvas.height);
-  drawMatrix(player.matrix, player.pos, player.color);
-}
 
+  drawMatrix(arena, { x: 0, y: 0 }, "#444"); // arena
+  drawMatrix(player.matrix, player.pos, player.color); // peça atual
+}
 function update(deltaTime) {
   dropCounter += deltaTime;
+
   if (dropCounter > dropInterval) {
     player.pos.y++;
+    if (collide(arena, player)) {
+      player.pos.y--; // volta 1 linha
+      merge(arena, player); // fixa peça na arena
+      playerReset(); // nova peça
+    }
     dropCounter = 0;
   }
   draw();
@@ -142,6 +149,46 @@ function updateWrapper(time = 0) {
   update(deltaTime);
 }
 
+function collide(arena, player) {
+  const [m, o] = [player.matrix, player.pos];
+  for (let y = 0; y < m.length; ++y) {
+    for (let x = 0; x < m[y].length; ++x) {
+      if (m[y][x] !== 0 && (arena[y + o.y] && arena[y + o.y][x + o.x]) !== 0) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+function merge(arena, player) {
+  player.matrix.forEach((row, y) => {
+    row.forEach((value, x) => {
+      if (value !== 0) {
+        const ax = x + player.pos.x;
+        const ay = y + player.pos.y;
+
+        // Evita escrita fora da arena
+        if (ay >= 0 && ay < arena.length && ax >= 0 && ax < arena[0].length) {
+          arena[ay][ax] = value;
+        }
+      }
+    });
+  });
+}
+function playerReset() {
+  const { shape, color } = randomPiece();
+  player.matrix = shape;
+  player.color = color;
+  player.pos.y = 0;
+  player.pos.x =
+    Math.floor(arena[0].length / 2) - Math.floor(shape[0].length / 2);
+
+  if (collide(arena, player)) {
+    arena.forEach((row) => row.fill(0)); // Game Over: limpa tudo
+    alert("Game Over");
+  }
+}
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") {
     player.pos.x--;
