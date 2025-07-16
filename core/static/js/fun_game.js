@@ -149,6 +149,11 @@ function playerMove(offset) {
     player.pos.x -= offset;
   }
   moveCounter = 0;
+  if (!firstMove) {
+    moveInterval = 10;
+  } else {
+    firstMove = false;
+  }
 }
 
 function playerReset() {
@@ -182,7 +187,8 @@ function playerRotate(dir) {
 let dropCounter = 0;
 let dropInterval = 700;
 let moveCounter = 0;
-let moveInterval = 10;
+let moveInterval = 100;
+let firstMove = true;
 let move = 0;
 
 let lastTime = 0;
@@ -229,6 +235,8 @@ document.addEventListener("keyup", (event) => {
     dropInterval = 700;
   } else if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
     move = 0;
+    firstMove = true;
+    moveInterval = 100;
   }
 });
 
