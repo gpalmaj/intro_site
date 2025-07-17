@@ -4,6 +4,12 @@ body {
   background-color: #232323;
   color: #cdc;
 }
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
 
 nav a,
 a {
@@ -17,25 +23,47 @@ p {
   text-align: justify;
 }
 
+h1 {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
 .fun-game-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  width: fit-content;
-  margin: auto;
+  width: 100%;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.game-description {
+  flex-basis: 70%; /* 3/5 */
+  max-width: 70%;
+}
+
+.game-wrapper {
+  flex-basis: 30%; /* 2/5 */
+  max-width: 30%;
+  position: relative;
 }
 
 canvas#fun_game {
   display: block;
-  margin: 0; /* remove espaços fantasmas */
 }
 
-#score {
-  margin-top: 8px;
-  margin-left: 40px;
+/* Score floats over canvas */
+.score-overlay {
+  position: absolute;
+  top: -27px;
+  left: 50px;
   color: white;
-  font-family: monospace;
-  font-size: 16px;
-  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.page-wrapper {
+  width: 35vw; /* 3/5 of the screen */
+  margin: 0 auto;
 }

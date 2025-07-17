@@ -172,8 +172,10 @@ function playerReset() {
     ((arena[0].length / 2) | 0) - ((player.matrix[0].length / 2) | 0);
   if (collide(arena, player)) {
     arena.forEach((row) => row.fill(0));
+    highScore = player.score;
     player.score = 0;
     updateScore();
+    updateHighScore();
   }
 }
 
@@ -198,6 +200,7 @@ let moveCounter = 0;
 let moveInterval = 100;
 let firstMove = true;
 let move = 0;
+let highScore = 0;
 
 let lastTime = 0;
 function update(time = 0) {
@@ -219,7 +222,12 @@ function update(time = 0) {
 }
 
 function updateScore() {
-  document.getElementById("score").innerText = "SCORE:" + player.score;
+  document.getElementById("score").innerText = "SCORE: " + player.score;
+}
+
+function updateHighScore() {
+  document.getElementById("high-score").innerText =
+    "Your high score: " + highScore;
 }
 
 document.addEventListener("keydown", (event) => {
@@ -269,4 +277,5 @@ const player = {
 
 playerReset();
 updateScore();
+updateHighScore();
 update();

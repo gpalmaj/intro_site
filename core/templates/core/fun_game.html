@@ -5,12 +5,24 @@
 {% block title %}Fun Game{% endblock %}
 
 {% block content %}
+<main class="page-wrapper">
   <h1>Fun Game</h1>
-  <div class="fun-game-container">
-    <canvas id="fun_game" width="200" height="400"></canvas>
+    <div class="fun-game-container">
+	
+    <div class="game-description">
+<h3 id="high-score"></h3>
 
-<div id="score"></div>
+      <p>
+	There are studies that show playing tetris can help in cases of psychological trauma. That being said, I found it apropriate to include in my website as it is one of my favourite games. 
+      </p>
+    </div>
+
+    <div class="game-wrapper">
+      <div id="score" class="score-overlay">Score: 0</div>
+      <canvas id="fun_game" width="200" height="400"></canvas>
+    </div>
   </div>
-  <script src="{% static 'js/fun_game.js' %}"></script>
+</main>
+<script src="{% static 'js/fun_game.js' %}"></script>
 {% endblock %}
 
