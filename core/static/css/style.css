@@ -30,3 +30,12 @@ canvas#fun_game {
   display: block;
   margin: 0; /* remove espaços fantasmas */
 }
+
+#score {
+  margin-top: 8px;
+  margin-left: 40px;
+  color: white;
+  font-family: monospace;
+  font-size: 16px;
+  text-align: center;
+}

@@ -91,9 +91,17 @@ function createPiece(type) {
 function drawMatrix(matrix, offset) {
   matrix.forEach((row, y) => {
     row.forEach((value, x) => {
+      const px = x + offset.x;
+      const py = y + offset.y;
+
+      // desenha borda cinza para todas as células
+      context.strokeStyle = "#111"; // ou "#888" para um cinza mais claro
+      context.lineWidth = 0.02; // para manter a linha bem fina
+      context.strokeRect(px, py, 1, 1);
+
       if (value !== 0) {
         context.fillStyle = colors[value];
-        context.fillRect(x + offset.x, y + offset.y, 1, 1);
+        context.fillRect(px, py, 1, 1);
       }
     });
   });
@@ -150,7 +158,7 @@ function playerMove(offset) {
   }
   moveCounter = 0;
   if (!firstMove) {
-    moveInterval = 10;
+    moveInterval = 20;
   } else {
     firstMove = false;
   }
@@ -211,7 +219,7 @@ function update(time = 0) {
 }
 
 function updateScore() {
-  document.getElementById("score").innerText = player.score;
+  document.getElementById("score").innerText = "SCORE:" + player.score;
 }
 
 document.addEventListener("keydown", (event) => {
@@ -221,11 +229,11 @@ document.addEventListener("keydown", (event) => {
     move = 1; //playerMove(1);
   } else if (event.code === "Space") {
     if (dropInterval == 700) {
-      dropInterval = dropInterval / 40;
+      dropInterval = dropInterval / 20;
     }
-  } else if (event.key === "ArrowUp") {
+  } else if (event.key === "ArrowUp" || event.key === "d") {
     playerRotate(1);
-  } else if (event.key === "ArrowDown") {
+  } else if (event.key === "ArrowDown" || event.key === "a") {
     playerRotate(-1);
   }
 });
@@ -251,7 +259,7 @@ const colors = [
   "#3877FF",
 ];
 
-const arena = createMatrix(12, 20);
+const arena = createMatrix(10, 20);
 
 const player = {
   pos: { x: 0, y: 0 },
