@@ -1,11 +1,11 @@
 {% extends 'core/base.html' %} {% block content %}
-<h1>Blog</h1>
+<h1>Thoughts</h1>
 <ul>
   {% for post in posts %}
   <li>
     <a href="{% url 'post_detail' slug=post.slug %}">{{ post.title }}</a>
-    <br />
-    <small>{{ post.created_at|date:"d M Y" }}</small>
+
+    <small> - {{ post.created_at|date:"d M Y" }}</small>
   </li>
   {% empty %}
   <li>nothing yet!</li>
